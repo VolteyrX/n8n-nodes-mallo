@@ -1,0 +1,60 @@
+{
+  "name": "n8n-nodes-mallo",
+  "version": "0.1.0",
+  "description": "n8n community node for Mallo — send WhatsApp templates, add leads to campaigns, and call the Mallo API.",
+  "keywords": [
+    "n8n-community-node-package",
+    "n8n",
+    "mallo",
+    "whatsapp",
+    "crm",
+    "marketing"
+  ],
+  "license": "MIT",
+  "homepage": "https://getmallo.ai",
+  "author": {
+    "name": "Mallo",
+    "email": "support@getmallo.ai"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VolteyrX/n8n-nodes-mallo.git"
+  },
+  "engines": {
+    "node": ">=20.15"
+  },
+  "main": "index.js",
+  "scripts": {
+    "build": "npx rimraf dist && tsc && gulp build:icons",
+    "dev": "tsc --watch",
+    "format": "prettier nodes credentials --write",
+    "lint": "eslint nodes credentials package.json",
+    "lintfix": "eslint nodes credentials package.json --fix",
+    "prepublishOnly": "npm run build && eslint -c .eslintrc.prepublish.js nodes credentials package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "credentials": [
+      "dist/credentials/MalloApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/Mallo/Mallo.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@typescript-eslint/parser": "~8.32.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-n8n-nodes-base": "^1.16.3",
+    "gulp": "^5.0.0",
+    "n8n-workflow": "*",
+    "prettier": "^3.5.3",
+    "rimraf": "^5.0.5",
+    "typescript": "^5.8.2"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  }
+}
